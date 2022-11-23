@@ -1,4 +1,7 @@
-
+#app {
+  text-align: center;
+  box-sizing: border-box;
+}
 
 /* :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;

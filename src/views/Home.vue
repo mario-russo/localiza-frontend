@@ -2,7 +2,7 @@
   <section>
     <section class="hero">
       <div class="hero-h3">
-        <h3>Conheça alguns edificios Tombando no Brasil</h3>
+        <h3>Conheça Alguns Edifícios Tombado no Brasil</h3>
         <h6>
           Existem 1121 bens tombados como patrimônio da humanidade, em 167
           países mundo afora. O Brasil possui 22 bens tombados (14 culturais, 6

@@ -18,11 +18,15 @@
 <script setup lang="ts"></script>
 <style scoped>
 .hero {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("../assets/fotos/home-foto.jpg");
+  background-image: linear-gradient(
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.5),
+      rgba(0, 0, 0, 0.8)
+    ),
+    url("../assets/fotos/home-foto-2.jpg");
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: bottom;
   height: 100vh;
   width: 100%;
   display: flex;

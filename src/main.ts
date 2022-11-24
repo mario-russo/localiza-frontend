@@ -14,9 +14,10 @@ import '@quasar/extras/fontawesome-v6/fontawesome-v6.css'
 // Import Quasar css
 import 'quasar/src/css/index.sass'
 import router from './router'
+import { createPinia } from 'pinia'
 
 
 
 createApp(App).use(Quasar, {
     plugins: {}, // import Quasar plugins and add here
-  }).use(router).mount('#app')
+  }).use(router).use(createPinia()).mount('#app')

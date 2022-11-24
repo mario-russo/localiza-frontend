@@ -3,6 +3,7 @@
     <section class="hero">
       <div class="hero-h3">
         <h3>Conheça Alguns Edifícios Tombado no Brasil</h3>
+        <h3>{{store}}</h3>
         <h6>
           Existem 1121 bens tombados como patrimônio da humanidade, em 167
           países mundo afora. O Brasil possui 22 bens tombados (14 culturais, 6
@@ -15,7 +16,12 @@
     </section>
   </section>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+  import { useTombamento } from '../store/Tombamento'
+
+  const store = useTombamento()
+</script>
+
 <style scoped>
 .hero {
   background-image: linear-gradient(

@@ -1,4 +1,5 @@
 import Home from '../views/Home.vue'
+import Tombamento from '../views/Tombamento.vue'
 
 
 const routes = [
@@ -6,6 +7,11 @@ const routes = [
         path: '/',
         name: 'Home',
         component: Home
+    },
+    {
+        path: '/tombamentos',
+        name: 'Tombamento',
+        component: Tombamento
     }
 
 ]

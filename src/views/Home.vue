@@ -8,14 +8,16 @@
           países mundo afora. O Brasil possui 22 bens tombados (14 culturais, 6
           naturais e 1 misto), em 17 estados.
         </h6>
-        <button class="button-48" role="button">
-          <span class="text">Conheça Mais</span>
+        <button class="button-48" @click="()=>{router.push('/tombamentos')}" role="button">
+          saiba mais 
         </button>
       </div>
     </section>
   </section>
 </template>
 <script setup lang="ts">
+import {useRouter}from 'vue-router'
+ const router= useRouter()
 </script>
 
 <style scoped>

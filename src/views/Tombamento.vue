@@ -15,7 +15,9 @@ const { usepatrimonio, patrimonioPorEstado } = useTombamento()
 const router = useRoute()
 const routers = useRouter()
 
-const url = transformaUrlParaString(router.params.estado)
+let parametro = router.params.estado.toString()
+
+const url: string  = transformaUrlParaString(parametro)
 
 let lista = ref<patrimonioType[]>([])
 

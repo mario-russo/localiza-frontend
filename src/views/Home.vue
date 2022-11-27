@@ -1,3 +1,12 @@
+<script setup lang="ts">
+import { ref } from 'vue';
+import { useRouter } from 'vue-router'
+import { transformaUrl } from '../utils'
+
+const router = useRouter()
+const url = ref('')
+</script>
+
 <template>
   <section>
     <section class="hero">
@@ -16,12 +25,6 @@
     </section>
   </section>
 </template>
-<script setup lang="ts">
-import { useRouter } from 'vue-router'
-import { transformaUrl } from '../utils'
-const router = useRouter()
-const url = ''
-</script>
 
 <style scoped>
 .hero {

@@ -1,17 +1,39 @@
 <script setup lang="ts">
-import { QInput, QBtn } from 'quasar';
-import { ref } from 'vue';
+
+import { onMounted, onUpdated, ref } from 'vue';
+import { useRoute, useRouter } from 'vue-router'
+
+import { QInput, QBtn, QCard, QCardSection } from 'quasar';
+
 import { useTombamento } from '../store/Tombamento'
 import { Patrimonio } from '../type';
+import { transformaUrl, transformaUrlParaString } from '../utils';
 
 type patrimonioType = Patrimonio
 const { usepatrimonio, patrimonioPorEstado } = useTombamento()
 
+const router = useRoute()
+const routers = useRouter()
+
+const url = transformaUrlParaString(router.params.estado)
+
 let lista = ref<patrimonioType[]>([])
+
 const patrimonioInput = ref('')
+
+
 function listaPatrimonio() {
+
+    routers.push('/tombamentos/' + transformaUrl(patrimonioInput.value))
     lista.value = patrimonioPorEstado(patrimonioInput.value)
 }
+
+onMounted(() => {
+    if (url) {
+        lista.value = patrimonioPorEstado(url)
+    }
+})
+
 </script>
 <template>
     <div class="center">
@@ -66,7 +88,6 @@ function listaPatrimonio() {
 .center {
     margin: 30px auto;
     width: 90%;
-    /* background-color: rgba(0, 0, 0, 0.26); */
 }
 
 .flex {

@@ -2,8 +2,14 @@ import { computed, ref } from "vue"
 import { estados, estadosType } from "../utils/estados"
 
 export function useAutoComplete() {
+    /**
+     * variavel de input para o estado
+     */
     let inputEstado = ref('')
 
+    /**
+     *  Retorna a pesquisa referenta o input do estado
+     */
     const pesquisaEstado = computed(() => {
 
         if (inputEstado.value === '') return []
@@ -18,6 +24,12 @@ export function useAutoComplete() {
         })
 
     })
+
+    /**
+     * Seleciona o Estado e retorna um string com o nome do estado
+     * @param estado 
+     * @returns String
+     */
     const estadoSelecionado = (estado : estadosType): string => {
         inputEstado.value = ''
         return estado.nome

@@ -48,7 +48,7 @@ export const useTombamento = defineStore('counter', () => {
     
     function patrimonioPorEstado( estado: string): Patrimonio[]{
        let resultado = usepatrimonio.filter(item=>{
-        if(estado === item.estado || estado === item.municipio){
+        if(estado.toLowerCase() === item.estado || estado.toLowerCase() === item.municipio){
             return item
         }
        })

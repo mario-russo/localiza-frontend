@@ -14,7 +14,7 @@ import { estadosType } from '../utils/estados';
 
 type patrimonioType = Patrimonio
 const { usepatrimonio, patrimonioPorEstado } = useTombamento()
-const { estados, inputEstado, pesquisaEstado,estadoSelecionado } = useAutoComplete()
+const { estados, inputEstado, pesquisaEstado, estadoSelecionado } = useAutoComplete()
 
 const router = useRoute()
 const routers = useRouter()
@@ -29,11 +29,18 @@ let patrimonioInput = ref(inputEstado)
 
 
 function listaPatrimonio() {
-    patrimonioInput = estadoSelecionado(inputEstado)
     routers.push('/tombamentos/' + transformaUrl(patrimonioInput.value))
-    lista.value = patrimonioPorEstado(patrimonioInput.value)
+    lista.value = patrimonioPorEstado(patrimonioInput.value.toLowerCase())
+    if (inputEstado) {
+        inputEstado.value = ''
+    }
 }
 
+function listandoEstado(item: estadosType) {
+    patrimonioInput.value = estadoSelecionado(item)
+    listaPatrimonio()
+    inputEstado.value = ''
+}
 
 onMounted(() => {
     if (url) {
@@ -46,15 +53,14 @@ onMounted(() => {
     <div class="center">
         <section class="flex">
             <div class="pesquisa">
-                <q-input v-model="inputEstado" bottom-slots label="Pesquisar Por Estado" class="ipt">
+                <q-input v-model="inputEstado" @keyup.enter="listaPatrimonio()" bottom-slots label="Pesquisar Por Estado" class="ipt">
                 </q-input>
-                <q-btn @click="listaPatrimonio" flat round color="primary" icon="search" class="btn-pesquisa"/>
+                <q-btn @click="listaPatrimonio" flat round color="primary" icon="search" class="btn-pesquisa" />
 
             </div>
 
-            {{patrimonioInput}}
             <ul v-if="pesquisaEstado.length" class="auto-complete">
-                <li v-for="(item, index) in pesquisaEstado" @click=" patrimonioInput = estadoSelecionado(item)"> {{ item.nome }}</li>
+                <li v-for="(item, index) in pesquisaEstado" @click="(listandoEstado(item))"> {{ item.nome }}</li>
             </ul>
 
             <div v-if="lista.length > 0">
@@ -128,7 +134,7 @@ onMounted(() => {
 .btn-pesquisa {
     height: 20px;
     width: 20px;
-    
+
 }
 
 .auto-complete {
@@ -146,12 +152,13 @@ onMounted(() => {
 .auto-complete li {
     margin-left: 0;
     list-style-type: none;
-    padding: 5px ;
+    padding: 5px;
     height: 25px;
     cursor: pointer;
     margin: 2px;
     text-align: left;
 }
+
 .auto-complete li:hover {
     font-weight: 700;
 }
